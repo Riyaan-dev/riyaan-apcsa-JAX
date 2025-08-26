@@ -48,7 +48,7 @@ class Math {
     //Try doing some math operations with numbers. How can we check to see if the math worked?
 
     //Create codes that will print the following:
-
+// hello sumedh
     //Odd integers from 1 to 100, inclusive of both
 
 
