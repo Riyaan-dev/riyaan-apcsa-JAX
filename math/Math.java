@@ -17,6 +17,10 @@ class Math {
 
     //ANSWER:
 
+    System.out.print("Hello World");
+    System.out.println("hello World");
+    // the answer is that the print ln will go to the next line for the print statement 
+
 
 
     //Throughout the year this year we will need to store information. For that we will be using VARIABLES!
@@ -29,12 +33,27 @@ class Math {
 
     //List examples of the types below and give definition
     //int (integer):
+
+    int sumedh = 5
+
+    double ryan = 5.0
+
+    boolean cool = true 
+
     //double:
     //boolean:
 
     //For now we are just going to work with primitive
 
     //Create 3 variables of each of the above types (USE GOOD CODING PRACTICE WHEN CREATING THE VARIABLES
+
+    int Temperature = 60
+
+    double GPA = 4.17
+
+    boolean hotOutside = true 
+
+    
 
 
 
