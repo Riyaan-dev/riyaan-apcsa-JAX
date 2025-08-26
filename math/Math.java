@@ -34,11 +34,11 @@ class Math {
     //List examples of the types below and give definition
     //int (integer):
 
-    int sumedh = 5
+    int sumedh = 5;
 
-    double ryan = 5.0
+    double ryan = 5.0;
 
-    boolean cool = true 
+    boolean cool = true; 
 
     //double:
     //boolean:
@@ -47,11 +47,11 @@ class Math {
 
     //Create 3 variables of each of the above types (USE GOOD CODING PRACTICE WHEN CREATING THE VARIABLES
 
-    int Temperature = 60
+    int Temperature = 60;
 
-    double GPA = 4.17
+    double GPA = 4.17;
 
-    boolean hotOutside = true 
+    boolean hotOutside = true; 
 
     
 
