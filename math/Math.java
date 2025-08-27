@@ -66,9 +66,26 @@ class Math {
 
     //Try doing some math operations with numbers. How can we check to see if the math worked?
 
+    System.out.println(5 * 5);
+
+
+    // we can out put it in the terminal
+
+    
+
+  
+
     //Create codes that will print the following:
-// hello sumedh
     //Odd integers from 1 to 100, inclusive of both
+
+    for (int i = 1; i <= 100; i +=2 ) {
+
+      System.out.println(i);
+
+
+
+
+    }
 
 
 
