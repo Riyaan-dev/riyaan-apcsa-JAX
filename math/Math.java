@@ -40,6 +40,10 @@ class Math {
 
     boolean cool = true; 
 
+    System.out.print(sumedh + ryan);
+
+    System.out.print(cool);
+
     //double:
     //boolean:
 
@@ -51,7 +55,12 @@ class Math {
 
     double GPA = 4.17;
 
-    boolean hotOutside = true; 
+    boolean hotOutside = true;
+    
+    
+    System.out.print(Temperature + GPA);
+
+    System.out.print(hotOutside);
 
     
 
