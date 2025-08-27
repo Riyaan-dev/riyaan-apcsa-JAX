@@ -117,10 +117,10 @@ class Math {
 
     System.out.println("PRINTING ALL NUMBERS THAT END IN 0");
 
-    for (int z = 1000; z>=0; z -= 10)
+    for (int z = 1000; z>=0; z -= 10) {
 
-    System.out.println(z);
-
+    System.out.print(z + "-");
+    }
     //All done!
   }
 }
