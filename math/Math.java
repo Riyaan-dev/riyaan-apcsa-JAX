@@ -115,6 +115,12 @@ class Math {
 
     //Starting at 1000, print on the same line (with a - [hypthen] between each) all of the numbers that end in 0 going down to 0
 
+    System.out.println("PRINTING ALL NUMBERS THAT END IN 0");
+
+    for (int z = 1000; z>=0; z -= 10)
+
+    System.out.println(z);
+
     //All done!
   }
 }
