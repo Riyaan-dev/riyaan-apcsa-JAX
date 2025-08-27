@@ -100,6 +100,16 @@ class Math {
 
     //All multiples of 3 from 1 to 100
 
+    System.out.println("PRINTING ALL MULTIPLES OF 3 FROM 1 TO 100"); 
+
+
+    for (int x = 3; x <=100; x +=3 ) {
+
+      System.out.println(x);
+
+
+    }
+
 
 
 
