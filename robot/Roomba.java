@@ -130,9 +130,32 @@ while (roomba.nextToABeeper())
 {
 
 	roomba.pickBeeper();
-	
+
 }		
 
+roomba.move();
+roomba.move();
+
+while (roomba.nextToABeeper()){
+
+	roomba.pickBeeper();	
+
+}
+
+roomba.move();
+roomba.move();	
+roomba.move();	
+
+while (roomba.nextToABeeper()){
+
+	roomba.pickBeeper();
+
+}
+
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.move();
 
 
 
