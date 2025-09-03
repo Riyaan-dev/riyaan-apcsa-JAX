@@ -29,7 +29,7 @@ public class Roomba implements Directions {
 
 		World.readWorld(worldName);
 		World.setVisible(true);
-		World.setDelay(1);
+		World.setDelay(5);
 
 
 		/** This section will have all the logic that takes the Robot to every location
@@ -70,8 +70,26 @@ public class Roomba implements Directions {
 			roomba.pickBeeper();
 		}
 
+		
 		roomba.move();
-		roomba.pickBeeper();
+
+		while (roomba.nextToABeeper()){
+
+
+			roomba.pickBeeper();
+ 
+
+
+		}
+
+
+		// code for picking up next set of beepers on the left (6 beepers)
+
+		roomba.turnLeft();
+		for (int i = 1; i <=4; i+=1){
+
+			roomba.move();
+		}
 
 
 		
