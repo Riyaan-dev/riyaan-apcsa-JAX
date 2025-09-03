@@ -18,6 +18,7 @@ public class Roomba implements Directions {
 	// declared here so it is visible in all the methods!
 	private Robot roomba;
 
+	
 	// You will need to add many variables!!
 
 
@@ -40,7 +41,7 @@ public class Roomba implements Directions {
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it?
 
-
+	int totalBeepers = 0; 
 		//this code picks up the 7 beepers to start 
 		roomba.move();
 		roomba.move();
@@ -70,6 +71,9 @@ public class Roomba implements Directions {
 			roomba.pickBeeper();
 		}
 
+
+
+		// while loop for picking up big number of beepers 
 		
 		roomba.move();
 
@@ -85,18 +89,64 @@ public class Roomba implements Directions {
 
 		// code for picking up next set of beepers on the left (6 beepers)
 
-		roomba.turnLeft();
-		for (int i = 1; i <=4; i+=1){
+		while (roomba.nextToABeeper()) {
 
-			roomba.move();
+			roomba.pickBeeper();
+
+
+
+
+
+
 		}
+
+
+		roomba.turnLeft();
+		roomba.move();
+		roomba.move();
+		roomba.move();
+		roomba.move();
+
+	 while (roomba.nextToABeeper()) {
+
+		roomba.pickBeeper();
+
+	 }
+
+// roomba will turn right and move forward twice 
+
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.move();
+roomba.move();
+
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.move();
+
+while (roomba.nextToABeeper())
+{
+
+	roomba.pickBeeper();
+	
+}		
+
+
+
+
+
+
+
+
 
 
 		
 
 
 
-		int totalBeepers = 0; // Need to move this somewhere else.
+		 // Need to move this somewhere else.
         // This method should return the total number of beepers cleaned up.
 		return totalBeepers;
 	}
