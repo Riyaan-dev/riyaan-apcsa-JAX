@@ -29,6 +29,7 @@ public class Roomba implements Directions {
 
 		World.readWorld(worldName);
 		World.setVisible(true);
+		World.setDelay(1);
 
 
 		/** This section will have all the logic that takes the Robot to every location
