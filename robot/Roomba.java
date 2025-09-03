@@ -158,8 +158,21 @@ roomba.turnLeft();
 roomba.move();
 
 
+roomba.turnLeft();
+roomba.turnLeft();
+roomba.turnLeft();
+for (int i =1; i<=4; i+=1){
+
+	roomba.move();
+}
 
 
+while (roomba.nextToABeeper()){
+
+	roomba.pickBeeper();
+}
+
+roomba.move();
 
 
 
