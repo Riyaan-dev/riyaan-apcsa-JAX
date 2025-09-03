@@ -30,7 +30,7 @@ public class Roomba implements Directions {
 
 		World.readWorld(worldName);
 		World.setVisible(true);
-		World.setDelay(5);
+		World.setDelay(1);
 
 
 		/** This section will have all the logic that takes the Robot to every location
@@ -49,6 +49,8 @@ public class Roomba implements Directions {
 
 			roomba.pickBeeper();
 
+			totalBeepers ++;
+
 
 		}
 
@@ -58,6 +60,8 @@ public class Roomba implements Directions {
 		
 		for (int i = 1; i <= 6; i +=1){
 		roomba.pickBeeper();
+
+		totalBeepers ++;
 		}
 
 		roomba.move();
@@ -69,6 +73,7 @@ public class Roomba implements Directions {
 		for (int i = 1; i<=3; i+=1){
 
 			roomba.pickBeeper();
+			totalBeepers ++;
 		}
 
 
@@ -81,6 +86,7 @@ public class Roomba implements Directions {
 
 
 			roomba.pickBeeper();
+			totalBeepers ++;
  
 
 
@@ -92,6 +98,7 @@ public class Roomba implements Directions {
 		while (roomba.nextToABeeper()) {
 
 			roomba.pickBeeper();
+			totalBeepers ++;
 
 
 
@@ -110,6 +117,7 @@ public class Roomba implements Directions {
 	 while (roomba.nextToABeeper()) {
 
 		roomba.pickBeeper();
+		totalBeepers ++;
 
 	 }
 
@@ -130,6 +138,7 @@ while (roomba.nextToABeeper())
 {
 
 	roomba.pickBeeper();
+	totalBeepers ++;
 
 }		
 
@@ -139,6 +148,7 @@ roomba.move();
 while (roomba.nextToABeeper()){
 
 	roomba.pickBeeper();	
+	totalBeepers ++;
 
 }
 
@@ -149,6 +159,7 @@ roomba.move();
 while (roomba.nextToABeeper()){
 
 	roomba.pickBeeper();
+	totalBeepers ++;
 
 }
 
@@ -164,12 +175,14 @@ roomba.turnLeft();
 for (int i =1; i<=4; i+=1){
 
 	roomba.move();
+	totalBeepers ++;
 }
 
 
 while (roomba.nextToABeeper()){
 
 	roomba.pickBeeper();
+	totalBeepers ++;
 }
 
 roomba.move();
