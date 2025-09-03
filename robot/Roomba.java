@@ -8,7 +8,7 @@ public class Roomba implements Directions {
 	public static void main(String[] args) {
 		// LEAVE THIS ALONE!!!!!!
 		String worldName = "robot/basicRoom.wld";
-
+		
 		Roomba cleaner = new Roomba();
 		int totalBeepers = cleaner.cleanRoom(worldName, 7, 6);
 		System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
@@ -25,6 +25,7 @@ public class Roomba implements Directions {
 
 		// A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
         // Make sure it starts at startX and startY location.
+		roomba = new Robot(startX, startY, East, 0);
 
 		World.readWorld(worldName);
 		World.setVisible(true);
@@ -37,7 +38,43 @@ public class Roomba implements Directions {
 
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it?
+
+
+		//this code picks up the 7 beepers to start 
 		roomba.move();
+		roomba.move();
+		for (int i = 1; i <=7; i +=1){
+
+			roomba.pickBeeper();
+
+
+		}
+
+		// this code moves over 1 and picks up 6 beepers 
+
+		roomba.move();
+		
+		for (int i = 1; i <= 6; i +=1){
+		roomba.pickBeeper();
+		}
+
+		roomba.move();
+		roomba.move();
+
+		roomba.turnLeft();
+		roomba.move();
+
+		for (int i = 1; i<=3; i+=1){
+
+			roomba.pickBeeper();
+		}
+
+		roomba.move();
+		roomba.pickBeeper();
+
+
+		
+
 
 
 		int totalBeepers = 0; // Need to move this somewhere else.
