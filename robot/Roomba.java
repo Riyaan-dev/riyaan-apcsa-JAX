@@ -18,6 +18,7 @@ public class Roomba implements Directions {
 	// declared here so it is visible in all the methods!
 	private Robot roomba;
 
+	int totalBeepers = 0;
 	
 	// You will need to add many variables!!
 
@@ -42,7 +43,90 @@ public class Roomba implements Directions {
 		// what is that and why are we getting it?
 
 
-	int i = 0;
+
+		int i = 0;
+		while (true){
+
+			if (!roomba.nextToABeeper()){
+
+				roomba.move();
+			}
+
+			while(roomba.nextToABeeper()){
+
+				roomba.pickBeeper();
+
+				totalBeepers ++;
+			
+			}
+
+			if(!roomba.frontIsClear()){
+
+				i++;
+
+				if (i%2 == 1){
+
+					roomba.turnLeft();
+
+					if (!roomba.frontIsClear()){
+
+						break;
+
+					
+					}
+				
+					roomba.move();
+					roomba.turnLeft();
+
+
+				}
+				else {
+
+					roomba.turnLeft();
+					roomba.turnLeft();
+					roomba.turnLeft();
+
+
+					if (!roomba.frontIsClear()){
+
+						break;
+
+					}
+
+					roomba.move();
+					roomba.turnLeft();
+					roomba.turnLeft();
+					roomba.turnLeft();
+
+					}
+
+				
+
+
+				}
+
+			
+				}
+
+				roomba.move();
+				roomba.turnLeft();
+
+
+				
+
+				
+return totalBeepers;
+				
+			}
+
+			
+
+		}
+
+	/*int i = 0;
+
+	
+
 
 	while (roomba.frontIsClear()){
 
@@ -250,5 +334,4 @@ roomba.move();
 		 // Need to move this somewhere else.
         // This method should return the total number of beepers cleaned up.
 		return totalBeepers;
-	}
-}
+	}*/
