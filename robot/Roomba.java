@@ -41,11 +41,63 @@ public class Roomba implements Directions {
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it?
 
+
+	int i = 0;
+
+	while (roomba.frontIsClear()){
+
+		while(roomba.nextToABeeper()){
+
+			if(!roomba.frontIsClear()){
+
+				i++;
+
+				if(i%2 == 1){
+
+					roomba.turnLeft();
+					if(!roomba.frontIsClear()){
+
+						break;
+
+					}
+
+					else{ 
+
+						roomba.turnLeft();
+						roomba.turnLeft();
+						roomba.turnLeft();
+
+					}
+					if (!roomba.frontIsClear()){
+
+
+						break;
+
+
+					}
+
+					roomba.move();
+					roomba.turnLeft();
+					roomba.turnLeft();
+					roomba.turnLeft();
+
+	
+
+
+				}
+
+			}
+
+			roomba.pickBeeper();
+		}
+
+		roomba.move();
+	}
 	int totalBeepers = 0; 
 		//this code picks up the 7 beepers to start 
 		roomba.move();
 		roomba.move();
-		for (int i = 1; i <=7; i +=1){
+		for (int x = 1; x <=7; x +=1){
 
 			roomba.pickBeeper();
 
@@ -58,7 +110,7 @@ public class Roomba implements Directions {
 
 		roomba.move();
 		
-		for (int i = 1; i <= 6; i +=1){
+		for (int x = 1; x <= 6; x +=1){
 		roomba.pickBeeper();
 
 		totalBeepers ++;
@@ -70,7 +122,7 @@ public class Roomba implements Directions {
 		roomba.turnLeft();
 		roomba.move();
 
-		for (int i = 1; i<=3; i+=1){
+		for (int x = 1; x<=3; x+=1){
 
 			roomba.pickBeeper();
 			totalBeepers ++;
@@ -172,7 +224,7 @@ roomba.move();
 roomba.turnLeft();
 roomba.turnLeft();
 roomba.turnLeft();
-for (int i =1; i<=4; i+=1){
+for (int x =1; x<=4; x+=1){
 
 	roomba.move();
 	totalBeepers ++;
