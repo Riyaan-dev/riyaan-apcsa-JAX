@@ -7,10 +7,12 @@ public class Roomba implements Directions {
 	// Main method to make this self-contained
 	public static void main(String[] args) {
 		// LEAVE THIS ALONE!!!!!!
-		String worldName = "robot/basicRoom.wld";
+		//String worldName = "robot/basicRoom.wld";
+
+		String worldName = "robot/testWorld.wld";
 		
 		Roomba cleaner = new Roomba();
-		int totalBeepers = cleaner.cleanRoom(worldName, 7, 6);
+		int totalBeepers = cleaner.cleanRoom(worldName, 25, 11);
 		System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
 
 	}
@@ -40,11 +42,69 @@ public class Roomba implements Directions {
 		 */
 
 		// the line below causes a null pointer exception
-		// what is that and why are we getting it?
+		// what is that and why are we getting it
 
 
 
-		int i = 0;
+		while(roomba.frontIsClear()){
+			
+			roomba.move();
+
+			while(roomba.nextToABeeper()){
+
+				totalBeepers++;
+
+				roomba.pickBeeper();
+
+
+				
+			}
+
+			if (!roomba.frontIsClear()){
+
+			if(roomba.facingEast()){
+
+				roomba.turnLeft();
+				roomba.move();
+				roomba.turnLeft();
+			}
+			
+
+			else {
+
+				roomba.turnLeft();
+				roomba.turnLeft();
+				roomba.turnLeft();
+				roomba.move();
+				roomba.turnLeft();
+				roomba.turnLeft();
+				roomba.turnLeft();
+
+
+
+			}
+
+			
+		}
+
+	
+		
+		
+	}
+
+	return totalBeepers;
+
+}
+}
+
+
+
+
+
+
+
+
+		/*int i = 0;
 		while (true){
 
 			if (!roomba.nextToABeeper()){
@@ -63,6 +123,8 @@ public class Roomba implements Directions {
 			if(!roomba.frontIsClear()){
 
 				i++;
+
+				//when i is odd the bot is facing east 
 
 				if (i%2 == 1){
 
@@ -118,220 +180,6 @@ public class Roomba implements Directions {
 return totalBeepers;
 				
 			}
-
-			
-
 		}
 
-	/*int i = 0;
-
-	
-
-
-	while (roomba.frontIsClear()){
-
-		while(roomba.nextToABeeper()){
-
-			if(!roomba.frontIsClear()){
-
-				i++;
-
-				if(i%2 == 1){
-
-					roomba.turnLeft();
-					if(!roomba.frontIsClear()){
-
-						break;
-
-					}
-
-					else{ 
-
-						roomba.turnLeft();
-						roomba.turnLeft();
-						roomba.turnLeft();
-
-					}
-					if (!roomba.frontIsClear()){
-
-
-						break;
-
-
-					}
-
-					roomba.move();
-					roomba.turnLeft();
-					roomba.turnLeft();
-					roomba.turnLeft();
-
-	
-
-
-				}
-
-			}
-
-			roomba.pickBeeper();
-		}
-
-		roomba.move();
-	}
-	int totalBeepers = 0; 
-		//this code picks up the 7 beepers to start 
-		roomba.move();
-		roomba.move();
-		for (int x = 1; x <=7; x +=1){
-
-			roomba.pickBeeper();
-
-			totalBeepers ++;
-
-
-		}
-
-		// this code moves over 1 and picks up 6 beepers 
-
-		roomba.move();
-		
-		for (int x = 1; x <= 6; x +=1){
-		roomba.pickBeeper();
-
-		totalBeepers ++;
-		}
-
-		roomba.move();
-		roomba.move();
-
-		roomba.turnLeft();
-		roomba.move();
-
-		for (int x = 1; x<=3; x+=1){
-
-			roomba.pickBeeper();
-			totalBeepers ++;
-		}
-
-
-
-		// while loop for picking up big number of beepers 
-		
-		roomba.move();
-
-		while (roomba.nextToABeeper()){
-
-
-			roomba.pickBeeper();
-			totalBeepers ++;
- 
-
-
-		}
-
-
-		// code for picking up next set of beepers on the left (6 beepers)
-
-		while (roomba.nextToABeeper()) {
-
-			roomba.pickBeeper();
-			totalBeepers ++;
-
-
-
-
-
-
-		}
-
-
-		roomba.turnLeft();
-		roomba.move();
-		roomba.move();
-		roomba.move();
-		roomba.move();
-
-	 while (roomba.nextToABeeper()) {
-
-		roomba.pickBeeper();
-		totalBeepers ++;
-
-	 }
-
-// roomba will turn right and move forward twice 
-
-roomba.turnLeft();
-roomba.turnLeft();
-roomba.turnLeft();
-roomba.move();
-roomba.move();
-
-roomba.turnLeft();
-roomba.turnLeft();
-roomba.turnLeft();
-roomba.move();
-
-while (roomba.nextToABeeper())
-{
-
-	roomba.pickBeeper();
-	totalBeepers ++;
-
-}		
-
-roomba.move();
-roomba.move();
-
-while (roomba.nextToABeeper()){
-
-	roomba.pickBeeper();	
-	totalBeepers ++;
-
-}
-
-roomba.move();
-roomba.move();	
-roomba.move();	
-
-while (roomba.nextToABeeper()){
-
-	roomba.pickBeeper();
-	totalBeepers ++;
-
-}
-
-roomba.turnLeft();
-roomba.turnLeft();
-roomba.turnLeft();
-roomba.move();
-
-
-roomba.turnLeft();
-roomba.turnLeft();
-roomba.turnLeft();
-for (int x =1; x<=4; x+=1){
-
-	roomba.move();
-	totalBeepers ++;
-}
-
-
-while (roomba.nextToABeeper()){
-
-	roomba.pickBeeper();
-	totalBeepers ++;
-}
-
-roomba.move();
-
-
-
-
-
-		
-
-
-
-		 // Need to move this somewhere else.
-        // This method should return the total number of beepers cleaned up.
-		return totalBeepers;
-	}*/
+		*/
