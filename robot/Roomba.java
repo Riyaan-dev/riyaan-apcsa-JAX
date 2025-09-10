@@ -34,6 +34,7 @@ public class Roomba implements Directions {
 		World.readWorld(worldName);
 		World.setVisible(true);
 		World.setDelay(1);
+	
 
 
 		/** This section will have all the logic that takes the Robot to every location
@@ -44,11 +45,14 @@ public class Roomba implements Directions {
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it
 
+		int totalArea = 0;
+
 
 
 		while(roomba.frontIsClear()){
 			
 			roomba.move();
+			totalArea++;
 
 			while(roomba.nextToABeeper()){
 
@@ -56,8 +60,6 @@ public class Roomba implements Directions {
 
 				roomba.pickBeeper();
 
-
-				
 			}
 
 			if (!roomba.frontIsClear()){
@@ -68,7 +70,6 @@ public class Roomba implements Directions {
 				roomba.move();
 				roomba.turnLeft();
 			}
-			
 
 			else {
 
@@ -80,106 +81,13 @@ public class Roomba implements Directions {
 				roomba.turnLeft();
 				roomba.turnLeft();
 
-
-
 			}
-
-			
 		}
 
-	
-		
 		
 	}
-
+System.out.println("the total area of the world is " + totalArea);
 	return totalBeepers;
 
 }
 }
-
-
-
-
-
-
-
-
-		/*int i = 0;
-		while (true){
-
-			if (!roomba.nextToABeeper()){
-
-				roomba.move();
-			}
-
-			while(roomba.nextToABeeper()){
-
-				roomba.pickBeeper();
-
-				totalBeepers ++;
-			
-			}
-
-			if(!roomba.frontIsClear()){
-
-				i++;
-
-				//when i is odd the bot is facing east 
-
-				if (i%2 == 1){
-
-					roomba.turnLeft();
-
-					if (!roomba.frontIsClear()){
-
-						break;
-
-					
-					}
-				
-					roomba.move();
-					roomba.turnLeft();
-
-
-				}
-				else {
-
-					roomba.turnLeft();
-					roomba.turnLeft();
-					roomba.turnLeft();
-
-
-					if (!roomba.frontIsClear()){
-
-						break;
-
-					}
-
-					roomba.move();
-					roomba.turnLeft();
-					roomba.turnLeft();
-					roomba.turnLeft();
-
-					}
-
-				
-
-
-				}
-
-			
-				}
-
-				roomba.move();
-				roomba.turnLeft();
-
-
-				
-
-				
-return totalBeepers;
-				
-			}
-		}
-
-		*/
