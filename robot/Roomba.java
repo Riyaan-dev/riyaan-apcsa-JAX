@@ -75,10 +75,6 @@ public class Roomba implements Directions {
 				}
 			}
 
-
-
-
-
 			}
 
 			if (!roomba.frontIsClear()){
@@ -87,7 +83,9 @@ public class Roomba implements Directions {
 
 				roomba.turnLeft();
 				roomba.move();
+				totalArea++;
 				roomba.turnLeft();
+				
 			}
 
 			else {
@@ -96,6 +94,7 @@ public class Roomba implements Directions {
 				roomba.turnLeft();
 				roomba.turnLeft();
 				roomba.move();
+				totalArea++;
 				roomba.turnLeft();
 				roomba.turnLeft();
 				roomba.turnLeft();
