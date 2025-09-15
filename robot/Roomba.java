@@ -3,13 +3,15 @@ package robot;
 import kareltherobot.*;
 
 public class Roomba implements Directions {
+	private static int st = 0;
+	private static int av = 0;	
 
 	// Main method to make this self-contained
 	public static void main(String[] args) {
 		// LEAVE THIS ALONE!!!!!!
 		//String worldName = "robot/basicRoom.wld";
-
-		String worldName = "robot/testWorld.wld";
+		String worldName = "robot/finalTestWorld2024.wld";
+		//String worldName = "robot/finalTestworld.wld";
 		
 		Roomba cleaner = new Roomba();
 		int totalBeepers = cleaner.cleanRoom(worldName, 25, 11);
@@ -29,11 +31,11 @@ public class Roomba implements Directions {
 
 		// A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
         // Make sure it starts at startX and startY location.
-		roomba = new Robot(startX, startY, East, 0);
+		roomba = new Robot(26, 149, West, 0);
 
 		World.readWorld(worldName);
 		World.setVisible(true);
-		World.setDelay(1);
+		World.setDelay(0);
 	
 
 
@@ -45,11 +47,15 @@ public class Roomba implements Directions {
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it
 
-		int totalArea = 0;
+		double totalArea = 0;
 
-		int largestPile = 0;
+		double largestPile = 0;
 		
-		int previousPile = 0;
+		double previousPile = 0;
+
+		double numberOfPiles = 0;
+
+		
 
 
 
@@ -60,8 +66,9 @@ public class Roomba implements Directions {
 
 			if (roomba.nextToABeeper()){
 				previousPile = 0;
+				numberOfPiles++;
 
-
+		
 			while(roomba.nextToABeeper()){
 
 				totalBeepers++;
@@ -72,6 +79,9 @@ public class Roomba implements Directions {
 				if (previousPile>largestPile){
 
 					largestPile = previousPile;
+					
+					st = roomba.street();
+					av = roomba.avenue();
 				}
 			}
 
@@ -104,12 +114,19 @@ public class Roomba implements Directions {
 			
 		}
 
-		System.out.println("the largest pile is " + largestPile);
 
 		
 	}
+
+	System.out.println("----Cleaning report----");
 	System.out.println("the total area of the world is " + totalArea);
+	System.out.println("the total number of piles is " + numberOfPiles);
+	System.out.println("the percent dirty is " + (100* numberOfPiles/totalArea)+ "%");
+	System.out.println("the average pile size is " + (totalBeepers/numberOfPiles));
+	System.out.println("Location of Largest Pile: " + st + ", " + av + ")" );
+	System.out.println("the largest pile is " + largestPile);
 	return totalBeepers;
+
 
 	
 
