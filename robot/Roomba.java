@@ -51,10 +51,12 @@ public class Roomba implements Directions {
 
 		double numberOfPiles = 1;
 
+		// initializes the variables of all of the data points 
+
 		
 
 
-
+// this nested while loop guides the roomba in a zig zag motion until it reaches the end of the wall
 while (true) {
     while (roomba.frontIsClear()) {
         roomba.move();
@@ -78,12 +80,12 @@ while (true) {
         }
     }
 
-    // Reached the end of a row
     if (roomba.facingEast()) {
         roomba.turnLeft();
         if (!roomba.frontIsClear()) {
             roomba.turnOff();  
             break;
+
         }
         roomba.move();
         totalArea++;
@@ -95,17 +97,20 @@ while (true) {
         if (!roomba.frontIsClear()) {
             roomba.turnOff();  
             break;
+			// this if statement makes sure the robot does not shut off after running into the east wall 
         }
         roomba.move();
         totalArea++;
         roomba.turnLeft();
         roomba.turnLeft();
         roomba.turnLeft();
+
+	// this makes the roomba turn left 
     }
 }
 
 
-
+// this outputs all of the data for us to see at the end of the run in the terminal 
 	System.out.println("the total area of the world is " + totalArea);
 	System.out.println("the total number of piles is " + numberOfPiles);
 	System.out.println("the percent dirty is " + (100* numberOfPiles/totalArea)+ "%");
