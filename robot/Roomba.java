@@ -5,8 +5,6 @@ import kareltherobot.*;
 public class Roomba implements Directions {
 	private static int st = 0;
 	private static int av = 0;	
-
-	// Main method to make this self-contained
 	public static void main(String[] args) {
 		// LEAVE THIS ALONE!!!!!!
 		//String worldName = "robot/basicRoom.wld";
@@ -24,13 +22,12 @@ public class Roomba implements Directions {
 
 	int totalBeepers = 99;
 	
-	// You will need to add many variables!!
+
 
 
 	public int cleanRoom(String worldName, int startX, int startY) {
 
-		// A new Robot should be constructed and assigned to the global (instance) variable named roomba that is declared above.
-        // Make sure it starts at startX and startY location.
+		
 		roomba = new Robot(26, 149, West, 0);
 
 		World.readWorld(worldName);
@@ -44,8 +41,7 @@ public class Roomba implements Directions {
 		 * large, complex task into smaller, easier to solve problems.
 		 */
 
-		// the line below causes a null pointer exception
-		// what is that and why are we getting it
+	
 
 		double totalArea = 2;
 
