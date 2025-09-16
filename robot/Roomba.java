@@ -22,12 +22,13 @@ public class Roomba implements Directions {
         World.setDelay(0);
 
         roomba = new Robot(startStreet, startAvenue, West, 0);
+        // initializes the variablese 
 
         double totalArea = 1;
         double largestPile = 0;
         double numberOfPiles = 0;
 
-        // helper to clean/check a single cell
+        //this while loop helps to check if the code is working
         while (true) {
             totalArea++;
             int currentPile = 0;
@@ -46,7 +47,9 @@ public class Roomba implements Directions {
                 }
             }
 
-            // move if possible, else try row change
+            // this prompts the roomba to move and pick up beeper using nested while loop + if statement 
+            // the code prompts the robot in zig zag motion and picks up beeper along the way
+
             if (roomba.frontIsClear()) {
                 roomba.move();
             } else {
@@ -55,7 +58,7 @@ public class Roomba implements Directions {
                     if (!roomba.frontIsClear()) break;
                     roomba.move();
                     roomba.turnLeft();
-                } else { // facing west
+                } else { 
                     roomba.turnLeft();
                     roomba.turnLeft();
                     roomba.turnLeft();
@@ -64,11 +67,13 @@ public class Roomba implements Directions {
                     roomba.turnLeft();
                     roomba.turnLeft();
                     roomba.turnLeft();
+                    // this stops the robot before running into the wall.
+                    
                 }
             }
         }
 
-        // results
+        // this outputs the results of the code 
         System.out.println("the total area of the world is " + totalArea);
         System.out.println("the total number of piles is " + numberOfPiles);
         System.out.println("the percent dirty is " + (100 * numberOfPiles / totalArea) + "%");
