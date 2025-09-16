@@ -3,124 +3,78 @@ package robot;
 import kareltherobot.*;
 
 public class Roomba implements Directions {
-	private static int st = 0;
-	private static int av = 0;	
-	public static void main(String[] args) {
-		// LEAVE THIS ALONE!!!!!!
-		//String worldName = "robot/basicRoom.wld";
-		String worldName = "robot/finalTestWorld2024.wld";
-		//String worldName = "robot/finalTestworld.wld";
-		
-		Roomba cleaner = new Roomba();
-		int totalBeepers = cleaner.cleanRoom(worldName, 25, 11);
-		System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
+    private static int st = 0;
+    private static int av = 0;    
 
-	}
+    public static void main(String[] args) {
+        String worldName = "robot/finalTestWorld2024.wld";
+        Roomba cleaner = new Roomba();
+        int totalBeepers = cleaner.cleanRoom(worldName, 26, 149); // starting pos
+        System.out.println("Roomba cleaned up a total of " + totalBeepers + " beepers.");
+    }
 
-	// declared here so it is visible in all the methods!
-	private Robot roomba;
+    private Robot roomba;
+    private int totalBeepers = 0;
 
-	int totalBeepers = 99;
-	
+    public int cleanRoom(String worldName, int startStreet, int startAvenue) {
+        World.readWorld(worldName);
+        World.setVisible(true);
+        World.setDelay(0);
 
+        roomba = new Robot(startStreet, startAvenue, West, 0);
 
+        double totalArea = 1;
+        double largestPile = 0;
+        double numberOfPiles = 0;
 
-	public int cleanRoom(String worldName, int startX, int startY) {
+        // helper to clean/check a single cell
+        while (true) {
+            totalArea++;
+            int currentPile = 0;
 
-		
-		roomba = new Robot(26, 149, West, 0);
-
-		World.readWorld(worldName);
-		World.setVisible(true);
-		World.setDelay(0);
-	
-
-
-		/** This section will have all the logic that takes the Robot to every location
-		 * and cleans up all piles of beepers. Think about ways you can break this
-		 * large, complex task into smaller, easier to solve problems.
-		 */
-
-	
-
-		double totalArea = 2;
-
-		double largestPile = 0;
-		
-		double previousPile = 0;
-
-		double numberOfPiles = 1;
-
-		// initializes the variables of all of the data points 
-
-		
-
-
-// this nested while loop guides the roomba in a zig zag motion until it reaches the end of the wall
-while (true) {
-    while (roomba.frontIsClear()) {
-        roomba.move();
-        totalArea++;
-
-        if (roomba.nextToABeeper()) {
-            previousPile = 0;
-            numberOfPiles++;
-
-            while (roomba.nextToABeeper()) {
-                totalBeepers++;
-                roomba.pickBeeper();
-                previousPile++;
-
-                if (previousPile > largestPile) {
-                    largestPile = previousPile;
+            if (roomba.nextToABeeper()) {
+                numberOfPiles++;
+                while (roomba.nextToABeeper()) {
+                    roomba.pickBeeper();
+                    totalBeepers++;
+                    currentPile++;
+                }
+                if (currentPile > largestPile) {
+                    largestPile = currentPile;
                     st = roomba.street();
                     av = roomba.avenue();
                 }
             }
+
+            // move if possible, else try row change
+            if (roomba.frontIsClear()) {
+                roomba.move();
+            } else {
+                if (roomba.facingEast()) {
+                    roomba.turnLeft();
+                    if (!roomba.frontIsClear()) break;
+                    roomba.move();
+                    roomba.turnLeft();
+                } else { // facing west
+                    roomba.turnLeft();
+                    roomba.turnLeft();
+                    roomba.turnLeft();
+                    if (!roomba.frontIsClear()) break;
+                    roomba.move();
+                    roomba.turnLeft();
+                    roomba.turnLeft();
+                    roomba.turnLeft();
+                }
+            }
         }
+
+        // results
+        System.out.println("the total area of the world is " + totalArea);
+        System.out.println("the total number of piles is " + numberOfPiles);
+        System.out.println("the percent dirty is " + (100 * numberOfPiles / totalArea) + "%");
+        System.out.println("the average pile size is " + (totalBeepers / numberOfPiles));
+        System.out.println("Location of Largest Pile: (" + "street " + st + ", avenue " + av + ")");
+        System.out.println("the largest pile is " + largestPile);
+        return totalBeepers;
     }
-
-    if (roomba.facingEast()) {
-        roomba.turnLeft();
-        if (!roomba.frontIsClear()) {
-            roomba.turnOff();  
-            break;
-
-        }
-        roomba.move();
-        totalArea++;
-        roomba.turnLeft();
-    } else { // facing west
-        roomba.turnLeft();
-        roomba.turnLeft();
-        roomba.turnLeft();
-        if (!roomba.frontIsClear()) {
-            roomba.turnOff();  
-            break;
-			// this if statement makes sure the robot does not shut off after running into the east wall 
-        }
-        roomba.move();
-        totalArea++;
-        roomba.turnLeft();
-        roomba.turnLeft();
-        roomba.turnLeft();
-
-	// this makes the roomba turn left 
-    }
-}
-
-
-// this outputs all of the data for us to see at the end of the run in the terminal 
-	System.out.println("the total area of the world is " + totalArea);
-	System.out.println("the total number of piles is " + numberOfPiles);
-	System.out.println("the percent dirty is " + (100* numberOfPiles/totalArea)+ "%");
-	System.out.println("the average pile size is " + (totalBeepers/numberOfPiles));
-	System.out.println("Location of Largest Pile: (" + "street " + st + ", avenue " + av + ")" );
-	System.out.println("the largest pile is " + largestPile);
-	return totalBeepers;
-
-
-	
-
-}
 }
