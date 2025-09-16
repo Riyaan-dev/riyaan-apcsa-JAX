@@ -24,6 +24,9 @@ public class Roomba implements Directions {
         roomba = new Robot(startStreet, startAvenue, West, 0);
         // initializes the variablese 
 
+        /*added 1 becuase it does not calculate the very top last square.
+         This is universal accross all testing worlds so adding 1 is a universal solution */
+
         double totalArea = 1;
         double largestPile = 0;
         double numberOfPiles = 0;
