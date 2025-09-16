@@ -22,7 +22,7 @@ public class Roomba implements Directions {
 	// declared here so it is visible in all the methods!
 	private Robot roomba;
 
-	int totalBeepers = 0;
+	int totalBeepers = 99;
 	
 	// You will need to add many variables!!
 
@@ -47,78 +47,69 @@ public class Roomba implements Directions {
 		// the line below causes a null pointer exception
 		// what is that and why are we getting it
 
-		double totalArea = 0;
+		double totalArea = 2;
 
 		double largestPile = 0;
 		
 		double previousPile = 0;
 
-		double numberOfPiles = 0;
+		double numberOfPiles = 1;
 
 		
 
 
 
-		while(roomba.frontIsClear()){
-			
-			roomba.move();
-			totalArea++;
+while (true) {
+    while (roomba.frontIsClear()) {
+        roomba.move();
+        totalArea++;
 
-			if (roomba.nextToABeeper()){
-				previousPile = 0;
-				numberOfPiles++;
+        if (roomba.nextToABeeper()) {
+            previousPile = 0;
+            numberOfPiles++;
 
-		
-			while(roomba.nextToABeeper()){
+            while (roomba.nextToABeeper()) {
+                totalBeepers++;
+                roomba.pickBeeper();
+                previousPile++;
 
-				totalBeepers++;
-				roomba.pickBeeper();
-				previousPile++;
+                if (previousPile > largestPile) {
+                    largestPile = previousPile;
+                    st = roomba.street();
+                    av = roomba.avenue();
+                }
+            }
+        }
+    }
 
-
-				if (previousPile>largestPile){
-
-					largestPile = previousPile;
-					
-					st = roomba.street();
-					av = roomba.avenue();
-				}
-			}
-
-			}
-
-			if (!roomba.frontIsClear()){
-
-			if(roomba.facingEast()){
-
-				roomba.turnLeft();
-				roomba.move();
-				totalArea++;
-				roomba.turnLeft();
-				
-			}
-
-			else {
-
-				roomba.turnLeft();
-				roomba.turnLeft();
-				roomba.turnLeft();
-				roomba.move();
-				totalArea++;
-				roomba.turnLeft();
-				roomba.turnLeft();
-				roomba.turnLeft();
-
-			}
-
-			
-		}
+    // Reached the end of a row
+    if (roomba.facingEast()) {
+        roomba.turnLeft();
+        if (!roomba.frontIsClear()) {
+            roomba.turnOff();  
+            break;
+        }
+        roomba.move();
+        totalArea++;
+        roomba.turnLeft();
+    } else { // facing west
+        roomba.turnLeft();
+        roomba.turnLeft();
+        roomba.turnLeft();
+        if (!roomba.frontIsClear()) {
+            roomba.turnOff();  
+            break;
+        }
+        roomba.move();
+        totalArea++;
+        roomba.turnLeft();
+        roomba.turnLeft();
+        roomba.turnLeft();
+    }
+}
 
 
-		
-	}
 
-	System.out.println("----Cleaning report----");
 	System.out.println("the total area of the world is " + totalArea);
 	System.out.println("the total number of piles is " + numberOfPiles);
 	System.out.println("the percent dirty is " + (100* numberOfPiles/totalArea)+ "%");
