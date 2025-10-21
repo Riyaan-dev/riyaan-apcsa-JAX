@@ -45,11 +45,10 @@ public class PigLatinTranslator {
 
     else {
 
-        return input.substring(2,input.length()) + input.substring(0,1) + "ay";
+        return input.substring(1,input.length()) + input.substring(0,1) + "ay";
 
     }
 
-    return input; // consonant words not yet handled
     }
 
     // Add additonal private methods here.
