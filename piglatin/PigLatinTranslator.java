@@ -22,15 +22,13 @@ public class PigLatinTranslator {
         return result;
     }
 
-    private static String translateWord(String input) {
+private static String translateWord(String input) {
     System.out.println("  -> translateWord('" + input + "')");
 
     if (input.length() == 0) return "";
 
-    // handle spaces only
     if (input.trim().length() == 0) return "";
 
-    // handle multiple words
     if (input.indexOf(" ") != -1) {
         String result = "";
         int start = 0;
@@ -45,7 +43,6 @@ public class PigLatinTranslator {
         return result;
     }
 
-    // handle punctuation
     String end = "";
     String last = input.substring(input.length() - 1);
     if (!Character.isLetter(last.charAt(0))) {
@@ -55,14 +52,9 @@ public class PigLatinTranslator {
 
     String vowels = "aeiouAEIOU";
     String first = input.substring(0, 1);
-    boolean capitalized = first.toUpperCase().equals(first);
 
     if (vowels.contains(first)) {
-        String translated = input + "ay";
-        if (capitalized) {
-            translated = translated.substring(0, 1).toUpperCase() + translated.substring(1).toLowerCase();
-        }
-        return translated + end;
+        return input + "ay" + end;
     }
 
     int i = 0;
@@ -71,18 +63,28 @@ public class PigLatinTranslator {
     }
 
     if (i == input.length()) {
-        String translated = input + "ay";
-        if (capitalized) {
-            translated = translated.substring(0, 1).toUpperCase() + translated.substring(1).toLowerCase();
-        }
-        return translated + end;
+        return input + "ay" + end;
     }
 
-    String translated = input.substring(i) + input.substring(0, i) + "ay";
-    if (capitalized) {
-        translated = translated.substring(0, 1).toUpperCase() + translated.substring(1).toLowerCase();
+    String start = input.substring(0, i);
+    String rest = input.substring(i);
+
+    String pattern = input;
+    String result = rest + start + "ay";
+
+    String fixed = "";
+    for (int j = 0; j < result.length(); j++) {
+        if (j < pattern.length()) {
+            char c = result.charAt(j);
+            char p = pattern.charAt(j);
+            if (Character.isUpperCase(p)) fixed += Character.toUpperCase(c);
+            else fixed += Character.toLowerCase(c);
+        } else {
+            fixed += result.charAt(j);
+        }
     }
-    return translated + end;
+
+    return fixed + end;
 }
 
     }
