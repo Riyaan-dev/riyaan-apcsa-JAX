@@ -1,5 +1,7 @@
 package piglatin;
 
+import java.util.Scanner;
+
 public class PigLatinTranslator {
 
     public static Book translate(Book input) {
@@ -17,8 +19,20 @@ public class PigLatinTranslator {
 
     public static String translate(String input) {
         System.out.println("  -> translate('" + input + "')");
-        return translateWord(input);
+
+        Scanner scan = new Scanner(input);
+        String result = "";
+        while (scan.hasNext()) {
+            String word = scan.next();
+            if (!result.isEmpty()) {
+                result += " ";
+            }
+            result += translateWord(word);
+        }
+        scan.close();
+        return result;
     }
+
     private static String translateWord(String input) {
         System.out.println("  -> translateWord('" + input + "')");
 
@@ -41,14 +55,18 @@ public class PigLatinTranslator {
 
         String end = "";
         String last = input.substring(input.length() - 1);
+
         if (!Character.isLetter(last.charAt(0))) {
             end = last;
             input = input.substring(0, input.length() - 1);
         }
+         if(input.length() == 0){
+            return end;
+         }
 
         String vowels = "aeiouAEIOU";
         String first = input.substring(0, 1);
-        Boolean stringIsCapitalized = Character.isUpperCase(input.charAt(0));
+        boolean stringIsCapitalized = Character.isUpperCase(input.charAt(0));
 
         if (vowels.contains(first)) {
             return input + "ay" + end;
@@ -71,21 +89,7 @@ public class PigLatinTranslator {
             rest = rest.substring(0, 1).toUpperCase() + rest.substring(1);
         }
 
-        String pattern = input;
         String result = rest + start + "ay";
-
-        /*String fixed = "";
-        for (int j = 0; j < result.length(); j++) {
-            if (j < pattern.length()) {
-                char c = result.charAt(j);
-                char p = pattern.charAt(j);
-                if (Character.isUpperCase(p)) fixed += Character.toUpperCase(c);
-                else fixed += Character.toLowerCase(c);
-            } else {
-                fixed += result.charAt(j);
-            }
-        }*/
-
         return result + end;
     }
 }
