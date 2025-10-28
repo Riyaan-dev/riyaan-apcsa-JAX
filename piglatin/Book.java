@@ -29,7 +29,7 @@ public class Book {
                 text.add(line);
             }
             reader.close();
-            System.out.println("✅ Successfully read book from URL.");
+            System.out.println("read book from URL.");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -42,7 +42,7 @@ public class Book {
                 writer.write(line);
                 writer.newLine();
             }
-            System.out.println("✅ Successfully wrote book to " + name);
+            System.out.println("wrote book to " + name);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
