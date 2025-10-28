@@ -15,6 +15,8 @@ public class App {
                 //  Load the book from URL
         Book gatsbyInput = new Book();
         gatsbyInput.readFromUrl("The Great Gatsby", "https://www.gutenberg.org/cache/epub/64317/pg64317.txt");
+
+        
         
 
         //  Translate the entire book
@@ -22,5 +24,6 @@ public class App {
 
         //  Write the translated book to test.txt
         gatsbyTranslatedBook.writeToFile("gatsbyPigLatin.txt");
+        TestSuite.run();
     }
 }
