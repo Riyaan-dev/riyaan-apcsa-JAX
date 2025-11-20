@@ -29,6 +29,8 @@ public class Hand {
     public Card remove(int index) {
         if (index < 0 || index >= size) return null;
 
+        //commit
+
         Card removed = cards[index];
 
         // Shift left
