@@ -33,7 +33,6 @@ public class GameOfLife implements Board {
     public void step()
     {
         print();
-        // create a new board to hold the next state
         int xLen = board.length;
         int yLen = board[0].length;
         int[][] next = new int[xLen][yLen];
