@@ -37,7 +37,10 @@ public class GameOfLife implements Board {
         int xLen = board.length;
         int yLen = board[0].length;
         int[][] next = new int[xLen][yLen];
-
+         for (int x = 0; x < xLen; x++) {
+            for (int y = 0; y < yLen; y++) {
+                int neighbors = countNeighbors(x, y);
+                int current = board[x][y];
 
 
     public int countNeighbors(int x, int y) {
