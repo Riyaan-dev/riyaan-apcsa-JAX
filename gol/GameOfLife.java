@@ -3,7 +3,7 @@ package gol;
 public class GameOfLife implements Board {
 
     private int[][] board;
-
+// added method
     public GameOfLife(int x, int y)
     {
         board = new int[x][y];
@@ -40,6 +40,8 @@ public class GameOfLife implements Board {
             t++;
         }
     }
+
+    // added step method to the class 
 
     public void step()
     {
@@ -170,7 +172,7 @@ public class GameOfLife implements Board {
 
                 
                 if (board[x][y] == 1) {
-                    
+
                     System.out.print("⬛");
                 } else {
                     System.out.print("⬜");
