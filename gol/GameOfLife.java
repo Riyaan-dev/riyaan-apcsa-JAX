@@ -30,17 +30,37 @@ public class GameOfLife implements Board {
 
 
     // Step the simulation forward one turn.
- public void step()
+    public void step()
     {
         print();
         // create a new board to hold the next state
         int xLen = board.length;
         int yLen = board[0].length;
         int[][] next = new int[xLen][yLen];
-         for (int x = 0; x < xLen; x++) {
+
+
+        for (int x = 0; x < xLen; x++) {
             for (int y = 0; y < yLen; y++) {
                 int neighbors = countNeighbors(x, y);
                 int current = board[x][y];
+
+
+                if (current == 1) {
+                    
+                    if (neighbors == 2 || neighbors == 3) {
+                        next[x][y] = 1;
+                    } else {
+                        next[x][y] = 0;
+                    }
+                } else {
+                    if (neighbors == 3) {
+                        next[x][y] = 1;
+                    } else {
+                        next[x][y] = 0;
+                    }
+                }
+            }
+        }
 
 
     public int countNeighbors(int x, int y) {
