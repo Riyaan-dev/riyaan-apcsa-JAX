@@ -24,8 +24,8 @@ public class Main {
     {
         // TODO: make this return an actual random array of the provided length.
         int[] a = new int[length];
-        for(int i = 0; i < arr.length; i++){
-            a[i] = int(Math.random()*100);
+        for(int i = 0; i < a.length; i++){
+            a[i] = (int)(Math.random()*100);
         }
         return a;
     }
