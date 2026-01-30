@@ -10,6 +10,7 @@ public class Main {
                 sum += i;
             }
         }
+        // main code 
 
         System.out.println("The sum is: " + sum);
     }
