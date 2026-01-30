@@ -5,16 +5,16 @@ public class SelectionSort implements Sorter {
     public void sort(int[] input) {
 
         for (int i=0; i<input.length;i++){
-            int mIndex = i;
+            int minimumIndex = i;
 
             for (int j = i+1; j< input.length;j++){
-                if (input[j] < input[mIndex]){
-                    mIndex=j;
+                if (input[j] < input[minimumIndex]){
+                    minimumIndex=j;
                 }
             }
-            int t = input[i];
-            input[i] = input[mIndex];
-            input[mIndex] = t;
+            int temp = input[i];
+            input[i] = input[minimumIndex];
+            input[minimumIndex] = temp;
         }  
 
 
