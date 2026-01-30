@@ -10,6 +10,7 @@ public class SelectionSort implements Sorter {
             for (int j = 1; j< input.length-1;j++){
                 if (input[j] < input[mIndex]){
                     mIndex=j;
+                    //not working
                 }
             }
         }  
