@@ -8,10 +8,10 @@ public class InsertionSort implements Sorter {
             int j = i-1;
 
             while (j >= 0 && input[i] > key){
-                input [i+1] == input[j];
+                input [j+1] = input[j];
                 j--;
             }
-            input[i+1] = key;
+            input[j+1] = key;
 
         }
         System.out.println("Insertion Sort!!!");
