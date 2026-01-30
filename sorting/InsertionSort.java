@@ -7,6 +7,12 @@ public class InsertionSort implements Sorter {
             int key = input[i];
             int j = i-1;
 
+            while (j >= 0 && input[i] > key){
+                input [i+1] == input[j];
+                j--;
+            }
+            input[i+1] = key;
+
         }
         System.out.println("Insertion Sort!!!");
     
