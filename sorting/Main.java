@@ -3,6 +3,9 @@ package sorting;
 public class Main {
     public static void main(String[] args)
     {
+        int[] testInput = randomArray(10);
+        TestSuite.run(testInput,1);
+        
         // Task:
         // 1. Implement missing sorting algorithms.
         //    - InsertionSort.java
