@@ -31,6 +31,6 @@ public class SelectionSort implements Sorter {
 
 
 
-        System.out.println("Selection Sort!!!");
+  
     }
 }
