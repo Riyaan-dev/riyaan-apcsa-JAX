@@ -3,8 +3,8 @@ package sorting;
 public class Main {
     public static void main(String[] args)
     {
-        int[] testInput = randomArray(100);
-        TestSuite.run(testInput,10000);
+        int[] testInput = randomArray(10);
+        TestSuite.run(testInput,1000);
     }
         // Task:
         // 1. Implement missing sorting algorithms.
@@ -18,7 +18,7 @@ public class Main {
 
 
         // Increase the loop count to get better results once it works.
-        // TestSuite.run(testInput, 10000);    cbsvx m√ß wtg4r}
+        // TestSuite.run(testInput, 10000);    }
 
     public static int[] randomArray(int length)
     {

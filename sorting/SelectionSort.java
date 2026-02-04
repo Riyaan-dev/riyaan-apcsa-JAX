@@ -6,29 +6,29 @@ public class SelectionSort implements Sorter {
         int steps = 0;
 
         for (int i = 0; i < input.length - 1; i++) {
+            
             int minIndex = i;
 
             for (int j = i + 1; j < input.length; j++) {
-                steps++; 
+                steps++;
 
 
                 if (input[j] < input[minIndex]) {
-
                     minIndex = j;
                 }
             }
 
-            int temp = input[i];
+            int temp = input[minIndex];
+            input[minIndex] = input[i];
 
 
-            input[i] = input[minIndex];
+
+            input[i] = temp;
 
 
-            input[minIndex] = temp;
-            steps += 3; 
 
+            steps += 3;
         }
 
-        
     }
 }
