@@ -1,7 +1,7 @@
 package sorting;
 
 public class InsertionSort implements Sorter {
-
+//done
     public void sort(int[] input) {
 
 
@@ -16,7 +16,7 @@ public class InsertionSort implements Sorter {
 
             while (j >= 0 && input[j] > key) {
 
-                
+
                 steps++;
                 input[j + 1] = input[j];
                 j--;
