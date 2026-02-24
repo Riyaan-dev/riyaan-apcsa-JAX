@@ -9,7 +9,7 @@ public class IrregularPolygon {
 
     // constructor
     public IrregularPolygon() {}
-
+// started project
     // public methods
     public void add(Point2D.Double aPoint)
     {
