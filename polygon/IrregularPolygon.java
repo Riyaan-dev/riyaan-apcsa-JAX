@@ -40,6 +40,4 @@ public class IrregularPolygon {
 
         return perimeter;
     }
-
-  
-}
+ 
