@@ -40,4 +40,24 @@ public class IrregularPolygon {
 
         return perimeter;
     }
- 
+  public double area() {
+        if (myPolygon.size() < 3) {
+            return 0;
+        }
+
+        double sum = 0;
+
+        for (int i = 0; i < myPolygon.size(); i++) {
+
+
+            Point2D.Double current = myPolygon.get(i);
+            Point2D.Double next = myPolygon.get((i + 1) % myPolygon.size());
+
+            sum += (current.x * next.y) - (next.x * current.y);
+        }
+
+        return Math.abs(sum) / 2.0;
+    }
+
+  
+}
