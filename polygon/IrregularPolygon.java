@@ -59,5 +59,41 @@ public class IrregularPolygon {
         return Math.abs(sum) / 2.0;
     }
 
+    public void draw()
+    {
+        try {
+            if (myPolygon.size() < 2) {
+                return;
+            }
+
+            SketchPad pad = new SketchPad(500, 500);
+
+
+            DrawingTool pen = new DrawingTool(pad);
+
+            Point2D.Double first = myPolygon.get(0);
+
+
+            pen.up();
+            pen.move(first.x, first.y);
+
+            pen.down();
+
+            for (int i = 1; i < myPolygon.size(); i++) {
+
+                Point2D.Double point = myPolygon.get(i);
+                pen.move(point.x, point.y);
+            }
+
+            pen.move(first.x, first.y);
+
+        } catch (java.awt.HeadlessException e) {
+
+
+
+            
+            System.out.println("Exception: No graphics support available.");
+        }
+    }
   
 }
