@@ -6,7 +6,6 @@ public class TowerSolver {
 
     public TowerSolver()
     {
-        // Nothing to do here
     }
 
     public void solve(TowerModel model)
@@ -15,7 +14,6 @@ public class TowerSolver {
         solve(model, 0, 1, 2, model.height() - 1);
     }
 
-    // Recursive method
     public void solve(TowerModel model, int start, int goal, int extra, int layer)
     {
         if (layer == 0)
