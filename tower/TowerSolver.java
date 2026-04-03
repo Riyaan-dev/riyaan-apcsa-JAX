@@ -26,6 +26,7 @@ public class TowerSolver {
         }
         solve(model, start, extra, goal, layer-1);
 
+        //done
         model.move(start,goal);
     
         solve(model, extra,goal,start,layer-1);
