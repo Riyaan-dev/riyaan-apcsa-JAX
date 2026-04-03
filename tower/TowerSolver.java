@@ -12,7 +12,7 @@ public class TowerSolver {
     public void solve(TowerModel model)
     {
         this.model = model;
-        solve(model, 0, 2, 1, model.height() - 1); // start → goal → extra
+        solve(model, 0, 2, 1, model.height() - 1); 
     }
 
     // Recursive method

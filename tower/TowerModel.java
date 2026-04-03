@@ -28,7 +28,6 @@ public class TowerModel {
         return towerHeight;
     }
 
-    // ✅ CORRECT move method (passes all tests)
     public void move(int source, int destination)
     {
         int disk = towers[source].pop();
@@ -40,7 +39,6 @@ public class TowerModel {
 
         int destTop = towers[destination].peek();
 
-        // Valid move
         if (destTop == 0 || destTop > disk)
         {
             towers[destination].push(disk);
@@ -48,7 +46,6 @@ public class TowerModel {
         }
         else
         {
-            // Undo invalid move
             towers[source].push(disk);
         }
     }
