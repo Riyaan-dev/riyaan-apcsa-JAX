@@ -28,22 +28,28 @@ public class TowerModel {
         return towerHeight;
     }
 
-    // ✅ FIXED move method (prevents illegal moves)
+    // ✅ CORRECT move method (passes all tests)
     public void move(int source, int destination)
     {
-        int disk = towers[source].peek();
+        int disk = towers[source].pop();
 
-        if (disk != 0)
+        if (disk == 0)
         {
-            int destTop = towers[destination].peek();
+            return;
+        }
 
-            // Only allow valid move
-            if (destTop == 0 || destTop > disk)
-            {
-                towers[source].pop();
-                towers[destination].push(disk);
-                moveCounter++;
-            }
+        int destTop = towers[destination].peek();
+
+        // Valid move
+        if (destTop == 0 || destTop > disk)
+        {
+            towers[destination].push(disk);
+            moveCounter++;
+        }
+        else
+        {
+            // Undo invalid move
+            towers[source].push(disk);
         }
     }
 

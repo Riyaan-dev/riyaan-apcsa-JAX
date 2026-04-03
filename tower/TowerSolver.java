@@ -6,14 +6,16 @@ public class TowerSolver {
 
     public TowerSolver()
     {
+        // Nothing needed
     }
 
     public void solve(TowerModel model)
     {
         this.model = model;
-        solve(model, 0, 1, 2, model.height() - 1);
+        solve(model, 0, 2, 1, model.height() - 1); // start → goal → extra
     }
 
+    // Recursive method
     public void solve(TowerModel model, int start, int goal, int extra, int layer)
     {
         if (layer == 0)
